@@ -79,3 +79,12 @@ function employeeFind() {
             }
         });
 }
+
+function viewEmployee() {
+    const query = "SELECT * FROM employee";
+    connection.query(query, function(err, res) {
+        res.forEach(function(item, index) {
+            console.table(item);
+        });
+    });
+};
