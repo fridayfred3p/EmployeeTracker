@@ -1,5 +1,5 @@
 {
-  "name": "Develop",
+  "name": "develop",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/fridayfred3p/EmployeeTracker/issues"
   },
-  "homepage": "https://github.com/fridayfred3p/EmployeeTracker#readme"
+  "homepage": "https://github.com/fridayfred3p/EmployeeTracker#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "mysql": "^2.18.1"
+  }
 }
