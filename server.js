@@ -50,7 +50,7 @@ function firstQuestion() {
             choices: [
                 "View departments, position, employees",
                 "Add departments, position, employees",
-                "Update employee roles",
+                "Update employee position",
                 "Update employee manager",
                 "View employee by manager",
                 "Delete departments, position, employees"
@@ -66,9 +66,9 @@ function firstQuestion() {
                     addAll();
                     break;
 
-                // case "Update employee roles":
-                //     viewEmployeeMan();
-                //     break;
+                case "Update employee position":
+                    updateEmployee();
+                    break;
 
                 // case "Update employee manager":
                 //     addEmployee();
@@ -76,10 +76,6 @@ function firstQuestion() {
 
                 // case "View employee by manager":
                 //     deleteEmployee();
-                //     break;
-
-                // case "Update Employee position":
-                //     updateEmployee();
                 //     break;
 
                 //  case "Delete departments, position, employees":
@@ -232,6 +228,30 @@ function addEmployees() {
         connection.query(placeEmployee, employeeValues, function(err, res) {
             if (err) throw err;
             console.table(res);
+            firstQuestion();
+        });
+    });
+};
+
+function updateEmployee() {
+    inquirer.prompt([{
+        name: "position_id",
+        type: "number",
+        message: "What is the new position id of the employee"
+    },
+    {
+        name: "employee_id",
+        type: "number",
+        message: "What is the employee id of the person which will be in the new position"
+    }]).then(function(answer) {
+        let newEmployee = [
+            answer.position_id,
+            answer.employee_id
+        ];
+        let newUpdate = "UPDATE employee SET position_id = ? WHERE id = ?";
+        connection.query(newUpdate, newEmployee, function(err, res) {
+            if (err) throw err;
+            console.log("New employee position changed!")
             firstQuestion();
         });
     });
