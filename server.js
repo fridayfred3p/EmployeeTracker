@@ -201,3 +201,38 @@ function addPosition() {
         })
     });
 };
+
+function addEmployees() {
+    inquirer.prompt([{
+        name: "first_name",
+        type: "input",
+        message: "What is the first name of the new employee?"
+    },{
+        name: "last_name",
+        type: "input",
+        message: "What is the last name of the new employee?"
+    },
+    {
+        name: "position_id",
+        type: "number",
+        message: "What is the position id of the new employee?"
+    },
+    {
+        name: "manager_id",
+        type: "number",
+        message: "What is the manager id of this new employees' manager?"
+    }]).then(function(answer) {
+        let employeeValues = {
+            first_name: answer.first_name,
+            last_name: answer.last_name,
+            position_id: answer.position_id,
+            manager_id: answer.manager_id
+        };
+        let placeEmployee = "INSERT INTO employee SET ?";
+        connection.query(placeEmployee, employeeValues, function(err, res) {
+            if (err) throw err;
+            console.table(res);
+            firstQuestion();
+        });
+    });
+};
