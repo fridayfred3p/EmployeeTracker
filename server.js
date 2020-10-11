@@ -163,11 +163,41 @@ function addDepartments() {
         message: "Which department would you like to add?"
     }]).then(function(answer) {
         let newD = "INSERT INTO department (branch) VALUES (?)";
-        console.log(answer);
+        // console.log(answer);
         connection.query(newD, answer.addD, function(err, res) {
             if (err) throw err;
                 console.table(res);
                 firstQuestion();
         });
+    });
+};
+
+function addPosition() {
+    inquirer.prompt([{
+        name: "title",
+        type: "input",
+        message: "Which the title of the position you would like to add?"
+    },
+    {
+        name: "salary",
+        type: "number",
+        message: "What is the salary of the new position?"
+    },
+    {
+        name: "department_id",
+        type: "number",
+        message: "What is the department ID of new position?"
+    }]).then(function(answer) {
+        let positionValues = {
+            title: answer.title,
+            salary: answer.salary,
+            department_id: answer.department_id
+        };
+        let placePosition = "INSERT INTO position SET ?";
+        connection.query(placePosition, positionValues, function(err, res) {
+            if (err) throw err;
+            console.table(res);
+            firstQuestion();
+        })
     });
 };
