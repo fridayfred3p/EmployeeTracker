@@ -49,15 +49,11 @@ function firstQuestion() {
             message: "What would you like to do?",
             choices: [
                 "View departments, position, employees",
-                "View All Employees by department",
-                "View All Employees by manager",
-                "Add Employee",
-                "Delete Employee",
-                "Update Employee position",
-                "Update Employee manager",
-                "View all position",
-                "Add position",
-                "Delete position"
+                "Add departments, position, employees",
+                "Update employee roles",
+                "Update employee manager",
+                "View employee by manager",
+                "Delete departments, position, employees"
             ]
         })
         .then(function(answer) {
@@ -66,19 +62,19 @@ function firstQuestion() {
                     viewAll();
                     break;
                 
-                // case "View All Employees by department":
-                //     viewAllEmployee();
-                //     break;
+                case "Add departments, position, employees":
+                    addAll();
+                    break;
 
-                // case "View All Employees by manager":
+                // case "Update employee roles":
                 //     viewEmployeeMan();
                 //     break;
 
-                // case "Add Employee":
+                // case "Update employee manager":
                 //     addEmployee();
                 //     break;
 
-                // case "Delete Employee":
+                // case "View employee by manager":
                 //     deleteEmployee();
                 //     break;
 
@@ -86,17 +82,9 @@ function firstQuestion() {
                 //     updateEmployee();
                 //     break;
 
-                 case "View all position":
-                     viewAllPosition();
-                     break;
-
-                // case "Add position":
-                //     addPosition();
-                //     break;
-
-                // case "Delete position":
-                //     deletePosition();
-                //     break;
+                //  case "Delete departments, position, employees":
+                //      deleteStuff();
+                //      break;
             }
         });
 }
@@ -105,7 +93,7 @@ function viewAll() {
     inquirer.prompt([{
         name: "action",
         type: "rawlist",
-        message: "What would you like to view",
+        message: "What would you like to view?",
         choices: ["departments", "employees", "position"]
     }]).then(function(answer) {
         switch (answer.action) {
@@ -144,3 +132,38 @@ function viewAll() {
     });
 };
 
+function addAll() {
+    inquirer.prompt([{
+        name: "action",
+        type: "rawlist",
+        message: "Would you like to add to the department, position, or employees?",
+        choices: ["departments", "position", "employees"]
+    }]).then(function(answer){
+        switch (answer.action) {
+            case "departments":
+                if (answer.action === "departments") {
+                    addDepartments();
+                };
+            case "position":
+                if (answer.action === "position") {
+                    addPosition();
+                };
+            case "employees":
+                if (answer.action === "employees") {
+                    addEmployees();
+                };
+        };
+    });
+};
+
+// function addDepartments() {
+//     inquirer.prompt([{
+//         name: "addD",
+//         type: "input",
+//         message: "Which department would you like to add?"
+//     }]).then(function(answer) {
+//         let newD = "INSERT INTO department (branch) VALUES (?)";
+//         console.log(answer);
+//         connection.query(newD)
+//     })
+// }
