@@ -156,14 +156,18 @@ function addAll() {
     });
 };
 
-// function addDepartments() {
-//     inquirer.prompt([{
-//         name: "addD",
-//         type: "input",
-//         message: "Which department would you like to add?"
-//     }]).then(function(answer) {
-//         let newD = "INSERT INTO department (branch) VALUES (?)";
-//         console.log(answer);
-//         connection.query(newD)
-//     })
-// }
+function addDepartments() {
+    inquirer.prompt([{
+        name: "addD",
+        type: "input",
+        message: "Which department would you like to add?"
+    }]).then(function(answer) {
+        let newD = "INSERT INTO department (branch) VALUES (?)";
+        console.log(answer);
+        connection.query(newD, answer.addD, function(err, res) {
+            if (err) throw err;
+                console.table(res);
+                firstQuestion();
+        });
+    });
+};
