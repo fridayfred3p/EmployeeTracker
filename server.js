@@ -51,9 +51,9 @@ function firstQuestion() {
                 "View departments, position, employees",
                 "Add departments, position, employees",
                 "Update employee position",
-                "Update employee manager",
-                "View employee by manager",
-                "Delete departments, position, employees"
+                // "Update employee manager",
+                // "View employee by manager",
+                // "Delete departments, position, employees"
             ]
         })
         .then(function(answer) {
