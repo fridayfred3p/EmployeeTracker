@@ -27,7 +27,7 @@ This application runs in the command line from your computer.  You will need to 
 When inside the Develop folder and after you ensure all necessary files have been downloaded you will need to either run the app by issuing the "npm run start" command
 or "node server.js" command to start the application.  The screen below will be displayed.
 
-![CLIappscreenshot](https://github.com/fridayfred3p/EmployeeTracker/blob/master/assets/employee-trackerss.png)
+![CLIappscreenshot](https://github.com/fridayfred3p/EmployeeTracker/blob/main/picture/employee-trackerss.PNG)
 
 From this point you can use the arrow keys to select what option you'd like to accomplish and using the app should be self explanatory from then on, just pick what you want
 to do and enter the data necessary to accomplish the task.
